@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import Amplify, { API, withSSRContext } from 'aws-amplify'
+import { API, withSSRContext, Amplify } from 'aws-amplify'
 import { GRAPHQL_AUTH_MODE } from '@aws-amplify/api'
 import { Authenticator } from '@aws-amplify/ui-react'
 import styles from '/styles/Home.module.css'
@@ -13,7 +13,6 @@ import {
 } from '../API'
 import { createTodo } from '../graphql/mutations'
 import { listTodos } from '../graphql/queries'
-
 import awsExports from '../aws-exports'
 
 Amplify.configure({ ...awsExports, ssr: true })
@@ -30,7 +29,7 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
         description: form.get('content').toString(),
       }
 
-      const request = (await ApiError.graphql({
+      const request = (await API.graphql({
         authMode: GRAPHQL_AUTH_MODE.AMAZON_COGNITO_USER_POOLS,
         query: 'createTodo',
         variables: {
@@ -59,7 +58,7 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
           <fieldset>
             <legend>Title</legend>
             <input
-              defaultValue={`Today, ${new Date().toLocaleDateString()}`}
+              defaultValue={`Today, ${new Date().toLocaleTimeString()}`}
               name='title'
             />
           </fieldset>
@@ -71,6 +70,8 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
               name='content'
             />
           </fieldset>
+
+          <button>Create Todo</button>
         </form>
       </Authenticator>
     </div>
