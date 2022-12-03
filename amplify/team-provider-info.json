@@ -10,6 +10,14 @@
       "StackName": "amplify-todoapp-dev-191909",
       "StackId": "arn:aws:cloudformation:us-west-1:141262468065:stack/amplify-todoapp-dev-191909/410a1750-72b9-11ed-b6bc-068464f0fe67",
       "AmplifyAppId": "d3076cyozxn58p"
+    },
+    "categories": {
+      "auth": {
+        "todoapp19d177a5": {}
+      },
+      "api": {
+        "todoapp": {}
+      }
     }
   }
 }

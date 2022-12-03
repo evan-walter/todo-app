@@ -8,6 +8,12 @@
       "expirationTime": 365,
       "apiKeyExpirationDate": "2023-12-03T03:23:38.922Z",
       "keyDescription": "My API Key"
-    }
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "authtodoapp19d177a5"
+      }
+    ]
   }
 }
